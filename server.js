@@ -3,18 +3,21 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-// require('dotenv').config();
+require('dotenv').config();
 
 // // MongoDB connection without deprecated options
 // mongoose.connect(process.env.MONGO_URI)
 //     .then(() => console.log('MongoDB Connected Successfully'))
 //     .catch(err => console.error('MongoDB connection error:', err));
 
-// // Middleware to parse JSON bodies
-// app.use(express.json());
+// Middleware to parse JSON bodies
+app.use(express.json());
 
-// app.use(cors());
+app.use(cors());
 
+const mockFixtureRoutes = require('./routes/mockFixtureRoutes');
+
+app.use('/mock/fixtures', mockFixtureRoutes);
 
 app.get('/', (req, res) => {
     res.status(200).json({
