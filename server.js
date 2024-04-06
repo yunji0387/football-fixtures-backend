@@ -15,8 +15,10 @@ app.use(express.json());
 
 app.use(cors());
 
+const fixtureRoutes = require('./routes/fixtureRoutes');
 const mockFixtureRoutes = require('./routes/mockFixtureRoutes');
 
+app.use('/fixtures', fixtureRoutes);
 app.use('/mock/fixtures', mockFixtureRoutes);
 
 app.get('/', (req, res) => {
